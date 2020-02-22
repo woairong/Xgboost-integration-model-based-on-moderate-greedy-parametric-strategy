@@ -21,7 +21,7 @@ params={'booster':'gbtree',
         'eval_metric': 'auc',
         'max_depth':3,
         'lambda':1,
-        'subsample':0.9,
+        'subsample':0.8,
         'colsample_bytree':0.8,
         'min_child_weight':3,
         'alpha':1e-5,
@@ -29,10 +29,10 @@ params={'booster':'gbtree',
         'nthread':4,
         'silent':1,
         'gamma':0.2,
-        'learning_rate' : 0.01} 
+        'learning_rate' : 0.01}
 watchlist = [(dtrain,'train')]
 bst = xgb.train(params,dtrain,num_boost_round=5000,evals=watchlist)
-bst.save_model('G:\\ml360\\train\\test\\model1') # 保存实验模型
+bst.save_model('G:\\ml360\\train\\test\\model2') # 保存实验模型
 
 ypred=bst.predict(dtest)
 y_pred = (ypred >= 0.5)*1
@@ -44,7 +44,7 @@ plot_importance(bst)
 
 # 画出AUC
 from sklearn import metrics
-print ('参数模型1下的实验结果：')
+print ('参数模型2下的实验结果：')
 print ('AUC: %.4f' % metrics.roc_auc_score(test_y,ypred))
 print ('ACC: %.4f' % metrics.accuracy_score(test_y,y_pred))
 print ('Recall: %.4f' % metrics.recall_score(test_y,y_pred))
@@ -65,6 +65,7 @@ plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.05])
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.title('Receiver operating characteristic example(参数模型1)')
+plt.title('Receiver operating characteristic example(paramarors_2)')
 plt.legend(loc="lower right")
 plt.show()
+
