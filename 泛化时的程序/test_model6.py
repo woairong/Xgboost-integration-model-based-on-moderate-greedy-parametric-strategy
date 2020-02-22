@@ -13,17 +13,17 @@ dtrain=xgb.DMatrix(train_x,label=train_y)
 params={'booster':'gbtree',
         'objective': 'binary:logistic',
         'eval_metric': 'auc',
-        'max_depth':3,
+        'max_depth':7,
         'lambda':1,
-        'subsample':0.9,
-        'colsample_bytree':0.8,
-        'min_child_weight':3,
+        'subsample':0.95,
+        'colsample_bytree':0.95,
+        'min_child_weight':4,
         'alpha':1e-5,
         'seed':0,
         'nthread':4,
         'silent':1,
-        'gamma':0.2,
+        'gamma':0,
         'learning_rate' : 0.01} 
 watchlist = [(dtrain,'train')]
-bst = xgb.train(params,dtrain,num_boost_round=4000,evals=watchlist)
-bst.save_model('G:\\ml360\\train\\test\\test_model1') # 保存实验模型
+bst = xgb.train(params,dtrain,num_boost_round=6745,evals=watchlist)
+bst.save_model('G:\\ml360\\train\\test\\test_model6') # 保存实验模型

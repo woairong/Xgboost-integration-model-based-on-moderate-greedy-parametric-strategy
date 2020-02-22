@@ -15,7 +15,7 @@ params={'booster':'gbtree',
         'eval_metric': 'auc',
         'max_depth':3,
         'lambda':1,
-        'subsample':0.9,
+        'subsample':0.8,
         'colsample_bytree':0.8,
         'min_child_weight':3,
         'alpha':1e-5,
@@ -25,5 +25,5 @@ params={'booster':'gbtree',
         'gamma':0.2,
         'learning_rate' : 0.01} 
 watchlist = [(dtrain,'train')]
-bst = xgb.train(params,dtrain,num_boost_round=4000,evals=watchlist)
-bst.save_model('G:\\ml360\\train\\test\\test_model1') # 保存实验模型
+bst = xgb.train(params,dtrain,num_boost_round=5000,evals=watchlist)
+bst.save_model('G:\\ml360\\train\\test\\test_model2') # 保存实验模型
